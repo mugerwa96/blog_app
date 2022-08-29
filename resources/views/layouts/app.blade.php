@@ -16,9 +16,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/mdb.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/webfonts/all.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/toastr/toastr.min.css') }}">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
 </head>
 <body>
 
@@ -26,9 +27,19 @@
    {{-- navigation bar start --}}
         <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white shadow">
             <div class="container">
+                @if (Auth())
+
+                <a class="navbar-brand fw-bold" href="{{ route('blog.index') }}">
+                   <i class="fab fa-mendeley mx-2"></i> {{ config('app.name', 'Laravel') }}
+                </a>
+                @else
+
                 <a class="navbar-brand fw-bold" href="{{ url('/') }}">
                    <i class="fab fa-mendeley mx-2"></i> {{ config('app.name', 'Laravel') }}
                 </a>
+                @endif
+
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon "><i class="fas fa-bars mx-2"></i></span>
                 </button>
@@ -42,33 +53,30 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item fw-bold">
+                            <a class="nav-link {{ Request::routeIs('blog.index')?'active':'' }}" href="{{ route('blog.index') }}"><i class="fas fa-house mx-2"></i>Home</a>
+                        </li>
                         @guest
-                        {{-- these links show only wen au loggeed in --}}
-                        <li class="nav-item fw-bold">
-                            <a class="nav-link" href="{{ route('blog.index') }}"><i class="fas fa-house mx-2"></i>Home</a>
-                        </li>
-                        <li class="nav-item fw-bold">
-                            <a class="nav-link" href="{{ route('blog.create') }}"><i class="fas fa-plus-circle mx-2"></i>Add post</a>
-                        </li>
-                        {{-- these links show only wen au loggeed in --}}
-                            <li class="nav-item fw-bold">
-                                <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-house mx-2"></i>Home</a>
-                            </li>
+
+
                             @if (Route::has('login'))
                                 <li class="nav-item fw-bold">
-                                    <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-lock-open mx-2"></i>{{ __('Login') }}</a>
+                                    <a class="nav-link {{ Request::routeIs('login')?'active':'' }}" href="{{ route('login') }}"><i class="fas fa-lock-open mx-2"></i>{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item fw-bold">
-                                    <a class="nav-link" href="{{ route('register') }}"><i class="fas fa-lock mx-2"></i>{{ __('Register') }}</a>
+                                    <a class="nav-link {{ Request::routeIs('register')?'active':'' }}" href="{{ route('register') }}"><i class="fas fa-lock mx-2"></i>{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item fw-bold">
+                            <a class="nav-link {{ Request::routeIs('blog.create')?'active':'' }}" href="{{ route('blog.create') }}"><i class="fas fa-plus-circle mx-2"></i>Add post</a>
+                        </li>
                             <li class="nav-item fw-bold dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                  <i class="fas fa-user-graduate mx-2"></i>  {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -96,6 +104,7 @@
                     <div class="row justify-content-center ">
 
                             <div class="col-md-10 ">
+
                                 @yield('content')
                             </div>
 
@@ -104,6 +113,10 @@
                     </div>
                 </div>
             </main>
+            <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+            <script src="{{asset('assets/js/jquery.js') }}"></script>
+            <script src="{{asset('assets/toastr/toastr.min.js') }}"></script>
+            @yield('scripts')
      {{-- main content section start --}}
 
 

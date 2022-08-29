@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id")->references("id")->on("users")->onDelete("cascade");
+            $table->string("title");
+            $table->text("description");
+            $table->string("image")->nullable();
+            $table->string("category_id")->references("id")->on("categories")->onDelete("cascade");
+            $table->string("star_id")->nullable();
+            $table->string("slug");
             $table->timestamps();
         });
     }
