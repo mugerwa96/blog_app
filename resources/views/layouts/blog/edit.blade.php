@@ -12,7 +12,7 @@
 
                     <p class=" fw-bold fs-4  text-left">Edit Post</p>
 
-                    <div class="blog-card shadow p-3 " style="    height:42rem;">
+                    <div class="blog-card shadow p-3 " style="    height:43rem;">
 
                         <form id="form" enctype="multipart/form-data">
                                 @csrf
@@ -25,7 +25,7 @@
 
                             <div class="mb-3">
                                 <small>Description</small>
-                                <textarea class="form-control"  name="description" id="description" rows="3">{{ $post->description }}</textarea>
+                                <textarea class="form-control"  name="description" id="description" rows="3" resize="none">{{ $post->description }}</textarea>
                                 <span id="description_error" ></span>
                             </div>
                             <div class="mb-3">
@@ -288,6 +288,7 @@ function validateImage()
         CKEDITOR.config.removePlugins = 'Save,Print,Preview,Find,About,Maximize,ShowBlocks,image,table';
     CKEDITOR.replace( 'description');
 
+    CKEDITOR.editorConfig=function( config ){ config.resize_maxWidth = 700;config.resize_maxHeight = 200};
 
 </script>
 
