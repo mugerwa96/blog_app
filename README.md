@@ -17,4 +17,15 @@ The font end was developed using Bootstrap the latest version which is V 5.2 , v
 https://getbootstrap.com/docs/5.2/getting-started/introduction/ <br> <br>
 4:Toast <br>
 Toast notification is a popular alert/push notification system introduced in Android/Material Design.
-The toast displays an unobtrusive and non-block popup box to send informational messages to your mobile and web users. In general, the toast notification will automatically dismiss itself after a timeout you specify.
+The toast displays an unobtrusive and non-block popup box to send informational messages to your mobile and web users. In general, the toast notification will automatically dismiss itself after a timeout you specify.<br> <br>
+
+Screen Shots <br><br>
+<img src="/public/screen_shots/screen_1.png"/>
+<img src="/public/screen_shots/screen_4.png"/>
+<img src="/public/screen_shots/screen_5.png"/>
+<img src="/public/screen_shots/screen_2.png"/>
+<img src="/public/screen_shots/screen_3.png"/>
+
+
+
+
