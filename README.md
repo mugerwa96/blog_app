@@ -1,7 +1,7 @@
 #SHARE IT APPLICATION  <br> <br>
 This application allows you to post, edit, save, and view your blog posts. 
 Important: To post with the Blogger application, you'll need to already have an account .
--The steps are simple, click on register and gey our account created, u will automatically be directed to the home where u will be able to create,edit and delete your own posts. <br>
+-The steps are simple, click on register and get your account created, u will automatically be directed to the home page where u will be able to create,edit and delete your own posts. <br>
 #Technologies behind The Application<br> <br>
 1:Lavarel 
 The application was developed using Laravel FrameWork V 9.25 https://laravel.com/ <br>
