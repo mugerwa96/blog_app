@@ -36,5 +36,9 @@ Route::get('/' ,'index')->name('admin.index');
 Route::get('/',[WelcomeController::class,'index'])->name('index');
 
 Auth::routes();
+// error route
+Route::fallback(function(){
+    return "not found";
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

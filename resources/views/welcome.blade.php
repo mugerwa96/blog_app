@@ -18,66 +18,76 @@
                     <p class=" fw-bold fs-4  text-left">Latest Post</p>
 
                     @foreach ($posts as $post)
-
                     {{-- blog-card --}}
-                        <div class="blog-card shadow my-4">
-                            <div class="blog-image ">
-                                <img src="{{ asset('uploads/'.$post->image) }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="blog-details ">
-                                {{-- header-information --}}
-                                    <div class="px-3    header-information d-flex justify-content-between">
-                                        <div class="category">
-                                            <p class="text-muted "><i class="fas fa-globe mx-2"></i>{{ $post->Category->name }}</p>
-                                        </div>
-                                        <div class="created_date">
-                                            <small class="text-muted fst-italic"><i class="fas fa-calendar mx-2"></i>{{ $post->created_at->diffForHumans() }}</small>
-                                        </div>
+                    <div class="blog-card shadow my-4">
+                        <div class="blog-image ">
+                            <img src="{{ asset('uploads/'.$post->image) }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="blog-details ">
 
+                            {{-- header-information --}}
+                                <div class="px-3    header-information d-flex justify-content-between">
+                                    <div class="category">
+                                        <p class="text-muted "><i class="fas fa-globe mx-2"></i>{{ $post->Category->name }}</p>
                                     </div>
-                                    <div class="line"></div>
-                                {{-- header-information --}}
+                                    <div class="created_date">
+                                        <small class="text-muted fst-italic"> <span class="badge rounded-pill bg-warning text-dark"><i class="fas fa-pen mx-2"></i>{{ $post->updated_at->diffForHumans() }}</span></small>
+                                        <small class="text-muted fst-italic"><i class="fas fa-calendar mx-2"></i>{{ $post->created_at->diffForHumans() }}</small>
+                                    </div>
 
-                                {{-- title of the post start --}}
-                                <div class="fs-5 text-center  fw-lighter">{{ Str::upper($post->title) }}</div>
-                                {{-- title of the post end --}}
-                                {{-- blog-details-start --}}
-                                    <div class="blog-infor px-3">
-                                        <small class="">
-                                            @if (strlen($post->description)>300)
-                                             {{ Str::limit($post->description,300) }}
-                                             <small> <a href="{{ route('blog.show') }}" class="text-decoration-none fst-italic  ">  <i class="fas fa-eye"></i> Read_more </a></small>
-                                            @else
-                                                {{ $post->description }}
-                                            @endif
-
-                                        </small>
-                                        @auth
-                                            @if (Auth::user()->id==$post->user_id)
-
-                                            <small><a href="" class="text-decoration-none fst-italic text-danger fw-bold mx-2"> <i class="fas fa-trash"></i> Delete</a>
-                                            <a href="" class="fas fa-pen-to-square text-warning fw-bold text-decoration-none "></i> <i>Edit</i></a></small> <br>
-                                            @endif
-                                        @endauth
+                                </div>
+                                <div class="line"></div>
+                            {{-- header-information --}}
 
 
-                                                {{-- starts_start --}}
-                                                    {{-- <div class="starts text-center">
+                            {{-- title of the post start --}}
+                                    <div class="fs-5 text-center  fw-lighter">{{ Str::upper($post->title) }}</div>
+                            {{-- title of the post end --}}
+
+                            {{-- blog-details-start --}}
+                                <div class="blog-infor px-3">
+                                    <small class="">
+                                        @if (strlen($post->description)>300)
+                                        {{ Str::limit($post->description,300) }}
+                                        <small> <a href="{{ route('blog.show') }}" class="text-decoration-none fst-italic  ">  <i class="fas fa-eye"></i> Read_more </a></small>
+                                        @else
+                                            {!! $post->description !!}
+                                        @endif
+
+                                    </small>
+                                    @auth
+                                        @if (Auth::user()->id==$post->user_id)
+
+                                        <small>
+                                            <tr>
+
+                                                <input type="hidden" id="slug"name="slug" value="{{ $post->slug }}">
+                                                <a href="#" id="delete"class="text-decoration-none fst-italic text-danger fw-bold mx-2"> <i class="fas fa-trash"></i> Delete</a>
+                                            </tr>
+                                        <a href="{{ route('blog.edit',$post) }}" class="fas fa-pen-to-square text-warning fw-bold text-decoration-none "></i> <i>Edit</i></a>
+                                        </small> <br>
+                                        @endif
+                                    @endauth
 
 
-                                                            <i class="fas fa-star text-warning"></i>
-                                                            <i class="fas fa-star text-warning"></i>
-                                                            <i class="fas fa-star text-warning"></i>
-                                                            <i class="fas fa-star text-warning"></i>
-                                                            <i class="fas fa-star-half text-warning"></i>
+                                            {{-- starts_start --}}
+                                                {{-- <div class="starts text-center">
 
-                                                    </div> --}}
-                                                {{-- starts_end --}}
-                                            </div>
-                                {{-- blog-details-end --}}
 
-                                {{-- author start --}}
+                                                        <i class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star text-warning"></i>
+                                                        <i class="fas fa-star-half text-warning"></i>
 
+                                                </div> --}}
+                                            {{-- starts_end --}}
+                                        </div>
+                            {{-- blog-details-end --}}
+
+
+                            {{-- author start --}}
+                                        <div class="line2"></div>
                                 <div class="author d-flex justify-content-between">
 
                                     <div class="author-image px-4">
@@ -91,10 +101,10 @@
 
                                         </div>
                                 </div>
-                                {{-- author end --}}
-                            </div>
+                            {{-- author end --}}
                         </div>
-                    {{-- blog-card --}}
+                    </div>
+                {{-- blog-card --}}
                     @endforeach
 
 

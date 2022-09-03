@@ -16,7 +16,9 @@ class BlogController extends Controller
     {
         if($request->category_id)
         {
-                $posts=Blog::where('category_id',$request->category_id)->latest()->paginate(5);
+                $posts=Blog::where('category_id',$request->category_id)
+                            ->latest()
+                            ->paginate(5);
                 return $this->display($posts);
 
         }
@@ -29,7 +31,7 @@ class BlogController extends Controller
         }
         else{
 
-            $posts=Blog::latest()->paginate(5);
+            $posts=Blog::orderBy("updated_at",'desc')->paginate(5);
 
             return $this->display($posts);
         }
@@ -120,7 +122,8 @@ class BlogController extends Controller
     // cross over functions
     private function category()
     {
-        return $categories=category::latest()->get();
+        return $categories=category::orderBy("updated_at",'desc')
+                                            ->get();
     }
     // retrieving information from db
     private function display($posts)
