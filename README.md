@@ -26,6 +26,9 @@ Screen Shots <br><br>
 <img src="/public/screen_shots/screen_2.png"/>
 <img src="/public/screen_shots/screen_3.png"/>
 
+Mobile View <br><br>
+<img src="/public/screen_shots/mobile_view.png"/>
+
 
 
 
