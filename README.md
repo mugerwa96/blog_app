@@ -26,7 +26,9 @@ Screen Shots <br><br>
 <img src="/public/screen_shots/screen_2.png"/>
 <img src="/public/screen_shots/screen_3.png"/>
 
-Mobile View <br><br>
+Mobile View  <br><br>
+The application is highly responsive on all kinds of devices 
+The smaller you make the screen of the browser you are on, the more the application  will adjust to the adjusted screen size.This is achieved via bootstrap <br>
 <img src="/public/screen_shots/screen_6.png"/>
 
 
